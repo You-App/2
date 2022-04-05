@@ -1,9 +1,317 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; URL=https://yandex.ru/games/developer?name=OLLO">
-  </head>
-  <body>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Экзамен ПДД</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.overlayScrollbars.css"/>
+<link rel="stylesheet" href="css/pause.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="modal.css">
+<meta name="viewport" content="width=device-width">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script>
+/*
+ * Content-Type:text/javascript
+ *
+ * A bridge between iPad and iPhone touch events and jquery draggable, 
+ * sortable etc. mouse interactions.
+ * @author Oleg Slobodskoi  
+ * 
+ * modified by John Hardy to use with any touch device
+ * fixed breakage caused by jquery.ui so that mouseHandled internal flag is reset 
+ * before each touchStart event
+ * 
+ */
+(function( $ ) {
+
+    $.support.touch = typeof Touch === 'object';
+
+    if (!$.support.touch) {
+        return;
+    }
+
+    var proto =  $.ui.mouse.prototype,
+    _mouseInit = proto._mouseInit;
+
+    $.extend( proto, {
+        _mouseInit: function() {
+            this.element
+            .bind( "touchstart." + this.widgetName, $.proxy( this, "_touchStart" ) );
+            _mouseInit.apply( this, arguments );
+        },
+
+        _touchStart: function( event ) {
+            if ( event.originalEvent.targetTouches.length != 1 ) {
+                return false;
+            }
+
+            this.element
+            .bind( "touchmove." + this.widgetName, $.proxy( this, "_touchMove" ) )
+            .bind( "touchend." + this.widgetName, $.proxy( this, "_touchEnd" ) );
+
+            this._modifyEvent( event );
+
+            $( document ).trigger($.Event("mouseup")); //reset mouseHandled flag in ui.mouse
+            this._mouseDown( event );
+
+            return false;           
+        },
+
+        _touchMove: function( event ) {
+            this._modifyEvent( event );
+            this._mouseMove( event );   
+        },
+
+        _touchEnd: function( event ) {
+            this.element
+            .unbind( "touchmove." + this.widgetName )
+            .unbind( "touchend." + this.widgetName );
+            this._mouseUp( event ); 
+        },
+
+        _modifyEvent: function( event ) {
+            event.which = 1;
+            var target = event.originalEvent.targetTouches[0];
+            event.pageX = target.clientX;
+            event.pageY = target.clientY;
+        }
+
+    });
+
+})( jQuery );
+  </script>
+</head>
+<body>	
+<div class="ya2">
+<!-- Yandex.RTB R-A-1365661-17 -->
+<div id="yandex_rtb_R-A-1365661-17"></div>
+<script>window.yaContextCb.push(()=>{
+  Ya.Context.AdvManager.render({
+    renderTo: 'yandex_rtb_R-A-1365661-17',
+    blockId: 'R-A-1365661-17'
+  })
+})</script>
+</div>
+	<article>
+<!-- partial:index.partial.html -->
+<div id="modal-container">
+  <div class="modal-background">
+    <div class="modal">
+      <h1>Откройте в мобильном!</h1>
+      <p>или</p>
+      <p>Покажите друзьям QR код!</p>
+                    <div class="ya">
+                    <img style="width:100%;margin-top:5px;" src="datapdd/img/qr.png">
+                    </div>
+      <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+								<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+							</svg>
+    </div>
+  </div>
+</div>
+		<div class="box">
+			<div id='moduleTest'>
+			<div class="wrapper">
+		
+			<div class="row">
+                    
+				<div class="col-md-12">	<h1><img style="width:32px;margin: 4px 8px; border-radius: 6px;" src="./datapdd/img/logo.png">Экзамен ГИБДД РФ<button id="modalclik" class="btn-a" onclick=" window.open('https://pdd2022.github.io/link.html','_blank')"><img style="width:26px;margin:-4px 0; border-radius:4px;" src="./datapdd/img/ecosystem.svg" /></button><button id="one" class="btn-a"><img style="width: 22px; margin: -4px -8px; border-radius: 4px;" src="./datapdd/img/iconqr.png" /></button></h1>
+
+				</div>
+  <script>
+$('.btn-a').click(function(){
+  var buttonId = $(this).attr('id');
+  $('#modal-container').removeAttr('class').addClass(buttonId);
+  $('body').addClass('modal-active');
+})
+
+$('#modal-container').click(function(){
+  $(this).addClass('out');
+  $('body').removeClass('modal-active');
+    YaGames.init({
+            adv: {
+                onAdvClose: wasShown => {
+                      console.info('adv closed!');
+                }
+            }
+        })
+        .then(ysdk => {
+           ysdk.adv.showFullscreenAdv();
+	window.ysdk = ysdk;
+        });
+
+	function ShowAd() {
+		window.ysdk.adv.showFullscreenAdv();
+	}
+});
+  </script>
+			</div>
+		
+			<div class="row">
+				<div class="col-md-8">
+					<div id="btnBilet" class="btn-group btn-group-justified">
+					</div>
+					<div id="ticketView">
+					</div>			
+				</div>
+				
+				<div class="col-md-4">
+<div class="ya3">
+<!-- Yandex.RTB R-A-1365661-18 -->
+<div id="yandex_rtb_R-A-1365661-18"></div>
+<script>window.yaContextCb.push(()=>{
+  Ya.Context.AdvManager.render({
+    renderTo: 'yandex_rtb_R-A-1365661-18',
+    blockId: 'R-A-1365661-18'
+  })
+})</script>
+</div>
+					<div class="btn-group btn-group-justified">
+						<div class="btn-group">
+							<button id="btnAB" type="button" class="btn btn-info" title="пдд билеты категории ABM">ABM</button> 
+						</div>
+					
+						<div class="btn-group">
+							<button id="btnCD" type="button" class="btn" title="пдд билеты категории CD">CD</button>
+						</div>
+								
+					</div>
+		
+					<div id="panelRightInput" class="input-group"> 
+						<span id="btnRNG" class="input-group-addon bg-info">Экзамен</span>
+						<span id="btnBiletList" class="input-group-addon">Билеты</span>
+						<span id="btnThemeList" class="input-group-addon">Темы</span>
+						<span id="btnMarathon" class="input-group-addon">Марафон</span>
+					</div>
+
+					<div class="overlay-scrollbars">
+						<div id="questList" class="list-group"  ></div>
+					</div>
+					<div id="rightBlock" class="well"  ><p style="margin:0px;">Билеты ПДД соответствуют официальным билетам ГИБДД РФ.</p></div>
+<div class="ya">
+					<!-- Yandex.RTB R-A-1365661-16 -->
+<div id="yandex_rtb_R-A-1365661-16"></div>
+<script>window.yaContextCb.push(()=>{
+  Ya.Context.AdvManager.render({
+    renderTo: 'yandex_rtb_R-A-1365661-16',
+    blockId: 'R-A-1365661-16'
+  })
+})</script>
+</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<script src="js/jquery.overlayScrollbars.min.js"></script>
+		<script src="js/pagination.js"></script>	
+		<script src="datapdd/js/script.js"></script>
+
+    <style>
+        #adsbox {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            display: none;
+        }
+    </style>
+  <!-- Yandex Games SDK -->
+<script src="https://yandex.ru/games/sdk/v2"></script>
+    <div id="adsbox" style="display: block;"></div>
+
+    <script type="text/javascript">
+        $("#adsbox").click(function() {
+            ShowYaBanner();
+            $('#adsbox').hide();
+        });
+        setTimeout(function() {
+            $('#adsbox').show();
+        }, 1000);
+
+        window.setInterval(function() {
+            $('#adsbox').show();
+        }, 60000);
+    </script>
+
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA');
+
+        if (YaGames) {
+            YaGames.init({
+                screen: {
+                    fullscreen: false
+                },
+                yandexApp: {
+                    enabled: true
+                },
+                adv: {
+                    onAdvClose: wasShown => {
+                        //cr_setSuspended(false);
+                    }
+                }
+            }).then(function(ysdk) {
+                window.ysdk = ysdk;
+            });
+        }
+
+        function ShowYaBanner() {
+            try {
+                ysdk.adv.showFullscreenAdv({
+
+                });
+            } catch (err) {}
+        }
+    </script>
+<script type="text/javascript">
+    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (mobile) {
+        $('.ya').css('display', 'none'); // or $('.ya').hide();
+    }
+    else
+    {
+        $('.ya2, .ya3').css('display', 'none'); // or $('.ya2').hide();
+    }
+</script>
+	</article>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(86401612, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/86401612" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>
