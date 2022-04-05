@@ -236,14 +236,14 @@ width:30%;
 
 @media screen and (max-width: 1600px) {
 article div.box{
-width: 65%;
+width: 95%;
 }
 
 }
 
 @media screen and (max-width: 1366px) {
 article div.box{
-width: 80%;
+width: 95%;
 }
 
 }
