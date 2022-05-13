@@ -974,7 +974,7 @@ div.fullWidth {
     flex-shrink: 0;
 }
 @media screen and (max-width: 510px) {
-  .pdd-tabs {
+  #pdd-tabs {
     margin: 0 44px 0 0px;
   }
 }
