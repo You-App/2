@@ -14,7 +14,15 @@
   vkBridge.send('VKWebAppInit');
 </script>
 <script>
-	vkBridge.send("VKWebAppStorageGet", {"keys": ["passed", "failed", "remain", "average"]});
+	vkBridge.send("VKWebAppStorageGet",
+{
+  "keys": [
+    "passed",
+    "failed",
+    "remain",
+    "average"
+  ]
+}
 </script>
 </head>
 <body>
