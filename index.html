@@ -8,19 +8,11 @@
   <link rel="stylesheet" href="./pdd2/themes/gray/style.css">
 <!-- PDD-TEST START -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.16/require.js" data-main="./pdd2/pdd-test.min.js" id="pdd-test-script"></script>
-	<script type="text/javascript">
-$(function(){
-	$('body').append('<iframe id="cookiesHackFrame" name="cookiesHackFrame" src="https://pdd2022.github.io/blank.html" style="display:none;"></iframe>');
-	$('body').append('<form id="cookiesHackForm" action="https://pdd2022.github.io/" method="post" target="cookiesHackFrame" >');
-	$('#cookiesHackForm').submit();
-});
-</script>
+
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
   vkBridge.send('VKWebAppInit');
-</script>
 
-<script>
 vkBridge.send("VKWebAppStorageSet", {
    key: "pdd-test-statistics",
    value: "remain"
