@@ -12,7 +12,16 @@
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
   vkBridge.send('VKWebAppInit');
-
+// Sending event to client
+bridge
+  .send("VKWebAppStorageGetKeys", {"count": 20, "offset": 0});
+  .then(data => {
+    // Handling received data
+    console.log(data.GetKeys);
+  })
+  .catch(error => {
+    // Handling an error
+  });
 
 </script>
 </head>
