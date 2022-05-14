@@ -14,7 +14,7 @@
   vkBridge.send('VKWebAppInit');
 </script>
 <script>
-	vkBridge.send("VKWebAppStorageGet", {"keys": ["pdd-test-statistics"]});
+	vkBridge.send("VKWebAppStorageGet", {"pdd-test-statistics": ["passed", "failed", "remain", "average"]});
 </script>
 </head>
 <body>
