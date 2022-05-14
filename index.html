@@ -12,6 +12,8 @@
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
   vkBridge.send('VKWebAppInit');
+</script>
+<script>
 	bridge.send("VKWebAppStorageGet", {"keys": ["passed", "failed", "remain", "average"]});
 </script>
 </head>
