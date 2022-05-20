@@ -9,6 +9,12 @@
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
   vkBridge.send('VKWebAppInit');</script>
+<script type="text/javascript">
+bridge.send("VKWebAppStorageSet", {
+   key: "pdd-test-statistics",
+   value: "pdd-test-statistics =" + n + "; expires=" + t.toGMTString() + "; path=/"
+});
+</script>
 </head>
 <body>
 <div class="app">
